@@ -4,16 +4,27 @@ import {
   ListGuesser,
   EditGuesser,
   ShowGuesser,
+  LoginWithEmail
 } from "react-admin";
 import { Layout } from "./Layout";
-import { dataProvider } from "./dataProvider";
-import { authProvider } from "./authProvider";
+
+import {
+  strapiDataProvider,
+  strapiAuthProvider,
+  strapiHttpClient,
+} from "ra-strapi";
+
+const STRAPI_URL = import.meta.env.VITE_STRAPI_REST_URL;
+const authProvider = strapiAuthProvider({ baseURL: STRAPI_URL });
+const httpClient = strapiHttpClient();
+const dataProvider = strapiDataProvider({ baseURL: STRAPI_URL, httpClient });
 
 export const App = () => (
   <Admin
     layout={Layout}
     dataProvider={dataProvider}
     authProvider={authProvider}
+    loginPage={LoginWithEmail}
   >
     <Resource
       name="meetings"
@@ -33,7 +44,7 @@ export const App = () => (
       edit={EditGuesser}
       show={ShowGuesser}
     />
-     <Resource
+    <Resource
       name="people"
       list={ListGuesser}
       edit={EditGuesser}

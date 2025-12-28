@@ -23,6 +23,9 @@ importers:
       ra-data-simple-rest:
         specifier: ^5.13.0
         version: 5.13.4(ra-core@5.13.4(@tanstack/react-query@5.90.14(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react-hook-form@7.69.0(react@19.2.3))(react-router-dom@7.11.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-router@7.11.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3))
+      ra-strapi:
+        specifier: ^1.0.3
+        version: 1.0.3(react-admin@5.13.4(@mui/system@7.3.6(@emotion/react@11.14.0(@types/react@18.3.27)(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.3.27)(react@19.2.3))(@types/react@18.3.27)(react@19.2.3))(@types/react@18.3.27)(react@19.2.3))(@mui/utils@7.3.6(@types/react@18.3.27)(react@19.2.3))(@types/react@18.3.27)(csstype@3.2.3)(react-dom@19.2.3(react@19.2.3))(react-is@19.2.3)(react@19.2.3))
       react:
         specifier: ^19.0.0
         version: 19.2.3
@@ -1575,6 +1578,10 @@ packages:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
 
+  qs@6.14.0:
+    resolution: {integrity: sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==}
+    engines: {node: '>=0.6'}
+
   query-string@7.1.3:
     resolution: {integrity: sha512-hh2WYhq4fi8+b+/2Kg9CEge4fDPvHS534aOOvOZeQ3+Vf2mCFsaFBYj0i+iXcAq6I9Vzp5fjMFBlONvayDC1qg==}
     engines: {node: '>=6'}
@@ -1599,6 +1606,11 @@ packages:
 
   ra-language-english@5.13.4:
     resolution: {integrity: sha512-19LmkWFsr1HpiF1Am/vkRUf+h/nwiwS89F04AmJQbCRjm3Gn97/fbv10xW0zwYDSVmiLIrbmuktZ1zO5j068fg==}
+
+  ra-strapi@1.0.3:
+    resolution: {integrity: sha512-4uxkPsWuQArrgDAeZ7Y5YGVrx1Tu7OxyMi5XEyHTUKWumFSVPugdK7Mu/naaQHsIavj4+vC9fWvrDcV8HrC0tA==}
+    peerDependencies:
+      react-admin: ^5.0.0
 
   ra-ui-materialui@5.13.4:
     resolution: {integrity: sha512-mhP/7LWcdbsxn2Kw1mSMADdFHNOt0clECHsAzWg7/eC7ETTpAt6AvXNczX5lHFdP8m2ST6o+mDJYae6JNlc4Hg==}
@@ -3581,6 +3593,10 @@ snapshots:
 
   punycode@2.3.1: {}
 
+  qs@6.14.0:
+    dependencies:
+      side-channel: 1.1.0
+
   query-string@7.1.3:
     dependencies:
       decode-uri-component: 0.2.2
@@ -3632,6 +3648,12 @@ snapshots:
       - react-hook-form
       - react-router
       - react-router-dom
+
+  ra-strapi@1.0.3(react-admin@5.13.4(@mui/system@7.3.6(@emotion/react@11.14.0(@types/react@18.3.27)(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.3.27)(react@19.2.3))(@types/react@18.3.27)(react@19.2.3))(@types/react@18.3.27)(react@19.2.3))(@mui/utils@7.3.6(@types/react@18.3.27)(react@19.2.3))(@types/react@18.3.27)(csstype@3.2.3)(react-dom@19.2.3(react@19.2.3))(react-is@19.2.3)(react@19.2.3)):
+    dependencies:
+      lodash: 4.17.21
+      qs: 6.14.0
+      react-admin: 5.13.4(@mui/system@7.3.6(@emotion/react@11.14.0(@types/react@18.3.27)(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@18.3.27)(react@19.2.3))(@types/react@18.3.27)(react@19.2.3))(@types/react@18.3.27)(react@19.2.3))(@mui/utils@7.3.6(@types/react@18.3.27)(react@19.2.3))(@types/react@18.3.27)(csstype@3.2.3)(react-dom@19.2.3(react@19.2.3))(react-is@19.2.3)(react@19.2.3)
 
   ra-ui-materialui@5.13.4(34b14774fb7dc395fc6abe971ea1300e):
     dependencies:
