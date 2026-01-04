@@ -1,11 +1,4 @@
-import {
-  Admin,
-  Resource,
-  ListGuesser,
-  EditGuesser,
-  ShowGuesser,
-  LoginWithEmail
-} from "react-admin";
+import { Admin, Resource, LoginWithEmail } from "react-admin";
 import { Layout } from "./Layout";
 
 import {
@@ -13,6 +6,14 @@ import {
   strapiAuthProvider,
   strapiHttpClient,
 } from "ra-strapi";
+import { MeetingCreate, MeetingEdit, MeetingList } from "./meetings/Meetings";
+import { TaskCreate, TaskEdit, TaskList } from "./tasks/Tasks";
+import {
+  DecisionCreate,
+  DecisionEdit,
+  DecisionList,
+} from "./decisions/Decisions";
+import { PersonCreate, PersonEdit, PersonList } from "./people/People";
 
 const STRAPI_URL = import.meta.env.VITE_STRAPI_REST_URL;
 const authProvider = strapiAuthProvider({ baseURL: STRAPI_URL });
@@ -28,27 +29,28 @@ export const App = () => (
   >
     <Resource
       name="meetings"
-      list={ListGuesser}
-      edit={EditGuesser}
-      show={ShowGuesser}
+      list={MeetingList}
+      create={MeetingCreate}
+      edit={MeetingEdit}
     />
+
     <Resource
       name="tasks"
-      list={ListGuesser}
-      edit={EditGuesser}
-      show={ShowGuesser}
+      list={TaskList}
+      create={TaskCreate}
+      edit={TaskEdit}
     />
     <Resource
       name="decisions"
-      list={ListGuesser}
-      edit={EditGuesser}
-      show={ShowGuesser}
+      list={DecisionList}
+      create={DecisionCreate}
+      edit={DecisionEdit}
     />
     <Resource
       name="people"
-      list={ListGuesser}
-      edit={EditGuesser}
-      show={ShowGuesser}
+      list={PersonList}
+      create={PersonCreate}
+      edit={PersonEdit}
     />
   </Admin>
 );
