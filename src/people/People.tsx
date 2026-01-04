@@ -8,12 +8,12 @@ import {
   SimpleForm,
   TextInput,
   required,
-  useRedirect,
   ReferenceManyField,
   useRecordContext,
 } from "react-admin";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { EditToolbar } from "../common/EditToolbar";
+import { transform } from "../common/transform";
 
 export const PersonList = () => (
   <List>
@@ -26,17 +26,14 @@ export const PersonList = () => (
 );
 
 export const PersonCreate = () => {
-  const redirect = useRedirect();
-  const location = useLocation();
-
-  const redirectTo = (location.state as any)?.redirectTo ?? "/people";
+  const navigate = useNavigate();
 
   return (
     <Create
       redirect="list"
       mutationOptions={{
         onSuccess: () => {
-          redirect(redirectTo);
+          navigate(-1);
         },
       }}
       mutationMode="pessimistic"
@@ -47,20 +44,18 @@ export const PersonCreate = () => {
 };
 
 export const PersonEdit = () => {
-  const redirect = useRedirect();
-  const location = useLocation();
-
-  const redirectTo = (location.state as any)?.redirectTo ?? "/people";
+  const navigate = useNavigate();
 
   return (
     <Edit
       redirect="list"
       mutationOptions={{
         onSuccess: () => {
-          redirect(redirectTo);
+          navigate(-1);
         },
       }}
       mutationMode="pessimistic"
+      transform={transform}
     >
       <PersonForm />
     </Edit>
@@ -79,6 +74,7 @@ function PersonForm() {
 
       {record?.id && (
         <>
+          <h3>Tasks</h3>
           <ReferenceManyField reference="tasks" target="people">
             <Datagrid rowClick="edit" bulkActionButtons={false}>
               <TextField source="description" />
@@ -88,6 +84,7 @@ function PersonForm() {
             </Datagrid>
           </ReferenceManyField>
 
+          <h3>Decisions</h3>
           <ReferenceManyField reference="decisions" target="people">
             <Datagrid rowClick="edit" bulkActionButtons={false}>
               <TextField source="description" />

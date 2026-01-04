@@ -1,9 +1,20 @@
-import { SaveButton, Toolbar, ToolbarProps } from "react-admin";
+import { SaveButton, Toolbar, Button } from "react-admin";
+import CloseIcon from "@mui/icons-material/Close";
+import { useNavigate } from "react-router-dom";
 
-import { JSX } from "react/jsx-runtime";
+export const EditToolbar = () => {
+  const navigate = useNavigate();
 
-export const EditToolbar = (props: JSX.IntrinsicAttributes & ToolbarProps) => (
-  <Toolbar {...props}>
-    <SaveButton />
-  </Toolbar>
-);
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
+  return (
+    <Toolbar sx={{ justifyContent: "space-between" }}>
+      <SaveButton />
+      <Button label="Cancel" onClick={handleGoBack}>
+        <CloseIcon />
+      </Button>
+    </Toolbar>
+  );
+};

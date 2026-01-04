@@ -12,11 +12,11 @@ import {
   ReferenceInput,
   AutocompleteInput,
   required,
-  useRedirect,
   ReferenceField,
 } from "react-admin";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { transform } from "../common/transform";
+import { EditToolbar } from "../common/EditToolbar";
 
 export const TaskList = () => (
   <List>
@@ -36,17 +36,14 @@ export const TaskList = () => (
 );
 
 export const TaskCreate = () => {
-  const redirect = useRedirect();
-  const location = useLocation();
-
-  const redirectTo = (location.state as any)?.redirectTo ?? "/tasks";
+  const navigate = useNavigate();
 
   return (
     <Create
       redirect="list"
       mutationOptions={{
         onSuccess: () => {
-          redirect(redirectTo);
+          navigate(-1);
         },
       }}
       mutationMode="pessimistic"
@@ -57,17 +54,14 @@ export const TaskCreate = () => {
 };
 
 export const TaskEdit = () => {
-  const redirect = useRedirect();
-  const location = useLocation();
-
-  const redirectTo = (location.state as any)?.redirectTo ?? "/tasks";
+  const navigate = useNavigate();
 
   return (
     <Edit
       redirect="list"
       mutationOptions={{
         onSuccess: () => {
-          redirect(redirectTo);
+          navigate(-1);
         },
       }}
       mutationMode="pessimistic"
@@ -82,7 +76,7 @@ function TaskForm() {
   const prefill = usePrefillFromLocationState();
 
   return (
-    <SimpleForm defaultValues={prefill ?? undefined}>
+    <SimpleForm defaultValues={prefill ?? undefined} toolbar={<EditToolbar />}>
       <ReferenceInput source="people" reference="people">
         <AutocompleteInput optionText="name" validate={[required()]} />
       </ReferenceInput>

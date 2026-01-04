@@ -16,6 +16,7 @@ import {
   ReferenceField,
 } from "react-admin";
 import { transform } from "../common/transform";
+import { EditToolbar } from "../common/EditToolbar";
 
 export const MeetingList = () => (
   <List>
@@ -28,7 +29,7 @@ export const MeetingList = () => (
 
 export const MeetingCreate = () => (
   <Create redirect="edit" mutationMode="pessimistic">
-    <SimpleForm>
+    <SimpleForm toolbar={<EditToolbar />}>
       <TextInput source="title" validate={[required()]} />
       <DateTimeInput source="date" defaultValue={new Date()} />
       <TextInput source="description" multiline minRows={3} maxRows={10} />
@@ -39,7 +40,7 @@ export const MeetingCreate = () => (
 export const MeetingEdit = () => {
   return (
     <Edit transform={transform} mutationMode="pessimistic">
-      <SimpleForm>
+      <SimpleForm toolbar={<EditToolbar />}>
         <TextInput source="title" validate={[required()]} />
         <DateTimeInput source="date" />
         <TextInput source="description" multiline minRows={3} maxRows={10} />
